@@ -1,0 +1,11 @@
+{
+  "name": "aironne_calendar",
+  "version": "1.0.0",
+  "description": "javascript easy peesy calendar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Denny Sander",
+  "license": "ISC"
+}
