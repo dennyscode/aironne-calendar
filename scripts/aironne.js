@@ -274,6 +274,7 @@ function show_calendar(input_date) {
     let node_day;
     let node_day_string;
     if (set_weekday_view === "number") {
+
         let node_header_month = document.createElement("h2");
         node_header_month.setAttribute("id", "node_header_month");
         node_header_month.textContent = months[date.getMonth()] + " " + date.getFullYear();
@@ -282,12 +283,13 @@ function show_calendar(input_date) {
         node_header.setAttribute("class", "weekdays_header")
         for (let i in weekdays) {
             let node_header_element = document.createElement("div");
+                node_header_element.setAttribute("class", "weekdays_header__item")
                 let node_header_element__longVersion = document.createElement("p");
-                node_header_element__longVersion.setAttribute("class", "weekday_lg");
+                node_header_element__longVersion.setAttribute("class", "weekday weekday--lg");
                 node_header_element__longVersion.textContent = capitalize(weekdays[i]);
                 node_header_element.appendChild(node_header_element__longVersion);
                 let node_header_element__shortVersion = document.createElement("p");
-                node_header_element__shortVersion.setAttribute("class", "weekday_sh");
+                node_header_element__shortVersion.setAttribute("class", "weekday weekday--sh");
                 node_header_element__shortVersion.textContent = capitalize(weekdays_short[i]);
                 node_header_element.appendChild(node_header_element__shortVersion);
 
@@ -323,8 +325,10 @@ function show_calendar(input_date) {
             node_day.addEventListener("click", function() { calendar_pick_date(this) })
             node_day.addEventListener("mouseup", function() {calendar_ev_mouseup(this)})
             node_day.addEventListener("mousedown", function() {calendar_ev_mousedown(this)})
-
-            node_day.textContent = format_two_digit(startdate.getDate());
+            let node_day__number = document.createElement("div");
+                node_day__number.textContent = format_two_digit(startdate.getDate());
+                node_day__number.setAttribute("class", "weekday__number");
+            node_day.appendChild(node_day__number);
             if (calstart == true) {
                 if (startdate.getFullYear() == input_date.getFullYear() && startdate.getMonth() == input_date.getMonth() && startdate.getDate() == input_date.getDate() && startdate.getFullYear() == new Date().getFullYear() && startdate.getMonth() == new Date().getMonth() && startdate.getDate() == new Date().getDate()) {
                     node_day.setAttribute("class", "weekday active_day today");
